@@ -100,47 +100,61 @@ export async function saveRecognitionRecord(record: RecognitionRecord): Promise<
 /**
  * 本地存储模式（当飞书 API 不可用时使用）
  */
+const storage = {
+  getItem: (key: string): string | null => {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      return window.localStorage.getItem(key);
+    }
+    return null;
+  },
+  setItem: (key: string, value: string): void => {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      window.localStorage.setItem(key, value);
+    }
+  },
+};
+
 export const localStorage = {
   saveCardInfo: (cardInfo: CardInfo): string => {
-    const cards = JSON.parse(localStorage.getItem('cards') || '[]');
+    const cards = JSON.parse(storage.getItem('cards') || '[]');
     const id = `card_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
     const newCard = { ...cardInfo, id, createdAt: new Date().toISOString() };
     cards.push(newCard);
-    localStorage.setItem('cards', JSON.stringify(cards));
+    storage.setItem('cards', JSON.stringify(cards));
     return id;
   },
   
   getCards: (): CardInfo[] => {
-    return JSON.parse(localStorage.getItem('cards') || '[]');
+    return JSON.parse(storage.getItem('cards') || '[]');
   },
   
   saveToCollection: (cardId: string, note?: string): void => {
-    const collections = JSON.parse(localStorage.getItem('collections') || '[]');
+    const collections = JSON.parse(storage.getItem('collections') || '[]');
     collections.push({
       cardId,
       note,
       collectedAt: new Date().toISOString(),
     });
-    localStorage.setItem('collections', JSON.stringify(collections));
+    storage.setItem('collections', JSON.stringify(collections));
   },
   
   saveToWishlist: (cardId: string, priority: string = '中', note?: string): void => {
-    const wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+    const wishlist = JSON.parse(storage.getItem('wishlist') || '[]');
     wishlist.push({
       cardId,
       priority,
       note,
       addedAt: new Date().toISOString(),
     });
-    localStorage.setItem('wishlist', JSON.stringify(wishlist));
+    storage.setItem('wishlist', JSON.stringify(wishlist));
   },
   
   saveRecognitionRecord: (record: RecognitionRecord): void => {
-    const records = JSON.parse(localStorage.getItem('recognitionRecords') || '[]');
+    const records = JSON.parse(storage.getItem('recognitionRecords') || '[]');
     records.push({
       ...record,
       id: `rec_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
     });
-    localStorage.setItem('recognitionRecords', JSON.stringify(records));
+    storage.setItem('recognitionRecords', JSON.stringify(records));
   },
 };
