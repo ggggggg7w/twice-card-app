@@ -226,6 +226,39 @@ body {
   text-overflow: ellipsis;
 }
 
+/* 空状态提示 */
+.empty-hint {
+  background: #f8f8f8;
+  border-radius: 12px;
+  padding: 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 2px dashed #ddd;
+}
+
+.empty-hint:hover {
+  background: #fff5f8;
+  border-color: #FF5FA2;
+}
+
+.empty-hint-icon {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.empty-hint p {
+  color: #888;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.empty-hint-action {
+  color: #FF5FA2;
+  font-size: 13px;
+  font-weight: 500;
+}
+
 /* 最近历史 */
 .recent-history {
   background: #f8f8f8;

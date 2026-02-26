@@ -294,18 +294,18 @@ function App() {
         </div>
       </div>
 
-      {/* 最近收藏预览 */}
-      {collection.length > 0 && (
-        <div className="recent-section">
-          <div className="section-header">
-            <h3 className="section-title">⭐ 最近收藏</h3>
-            <button className="view-all-btn" onClick={() => { setActiveTab('collection'); setMode('collection'); }}>
-              查看全部 →
-            </button>
-          </div>
+      {/* 我的收藏区域 - 始终显示 */}
+      <div className="recent-section">
+        <div className="section-header">
+          <h3 className="section-title">⭐ 我的收藏</h3>
+          <button className="view-all-btn" onClick={() => { setActiveTab('collection'); setMode('collection'); }}>
+            {collection.length > 0 ? '查看全部 →' : '去添加 →'}
+          </button>
+        </div>
+        {collection.length > 0 ? (
           <div className="recent-cards">
             {collection.slice(0, 5).map((card) => (
-              <div key={card.id} className="mini-card">
+              <div key={card.id} className="mini-card" onClick={() => { setActiveTab('collection'); setMode('collection'); }}>
                 <div className="mini-card-image">
                   {card.imageBase64 ? (
                     <img src={card.imageBase64} alt={card.member} />
@@ -320,18 +320,24 @@ function App() {
               </div>
             ))}
           </div>
-        </div>
-      )}
-
-      {/* 最近识别历史 */}
-      {history.length > 0 && (
-        <div className="recent-section">
-          <div className="section-header">
-            <h3 className="section-title">📝 最近识别</h3>
-            <button className="view-all-btn" onClick={() => { setActiveTab('history'); setMode('history'); }}>
-              查看全部 →
-            </button>
+        ) : (
+          <div className="empty-hint" onClick={() => handleSelectMode('single')}>
+            <div className="empty-hint-icon">📭</div>
+            <p>还没有收藏卡片</p>
+            <span className="empty-hint-action">点击识别第一张 →</span>
           </div>
+        )}
+      </div>
+
+      {/* 识别历史区域 - 始终显示 */}
+      <div className="recent-section">
+        <div className="section-header">
+          <h3 className="section-title">📝 识别历史</h3>
+          <button className="view-all-btn" onClick={() => { setActiveTab('history'); setMode('history'); }}>
+            {history.length > 0 ? '查看全部 →' : '去识别 →'}
+          </button>
+        </div>
+        {history.length > 0 ? (
           <div className="recent-history">
             {history.slice(0, 3).map((record, idx) => (
               <div key={idx} className="history-item">
@@ -346,8 +352,14 @@ function App() {
               </div>
             ))}
           </div>
-        </div>
-      )}
+        ) : (
+          <div className="empty-hint" onClick={() => handleSelectMode('single')}>
+            <div className="empty-hint-icon">📝</div>
+            <p>还没有识别记录</p>
+            <span className="empty-hint-action">开始第一次识别 →</span>
+          </div>
+        )}
+      </div>
 
       <div className="app-footer">
         <p>支持 TWICE 全员小卡识别</p>
