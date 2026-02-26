@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: twice-card-app
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: node server.cjs
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: KIMI_API_KEY
+        sync: false  # 需要在 Render 控制台手动设置
+    healthCheckPath: /api/health
