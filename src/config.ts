@@ -79,6 +79,7 @@ export interface RecognitionResult {
   cardType?: CardType | string;
   confidence: number;
   rawResponse: string;
+  reasoning?: string; // 识别依据
 }
 
 // 卡片信息接口
