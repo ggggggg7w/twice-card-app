@@ -1,3 +1,30 @@
+// 类型定义 - 使用 string 类型避免循环依赖
+export interface RecognitionResult {
+  member?: string;
+  album?: string;
+  cardType?: string;
+  confidence: number;
+  rawResponse: string;
+  reasoning?: string;
+}
+
+export interface CardInfo {
+  id?: string;
+  member: string;
+  album: string;
+  cardType: string;
+  imageUrl?: string;
+  createdAt?: string;
+}
+
+export interface RecognitionRecord {
+  id?: string;
+  cardInfo: CardInfo;
+  originalImage: string;
+  recognizedAt: string;
+  userConfirmed: boolean;
+}
+
 // 应用配置
 export const config = {
   // Kimi API 配置
@@ -71,32 +98,3 @@ export const CARD_TYPES = [
 export type Member = typeof TWICE_MEMBERS[number];
 export type Album = typeof TWICE_ALBUMS[number];
 export type CardType = typeof CARD_TYPES[number];
-
-// 识别结果接口
-export interface RecognitionResult {
-  member?: Member | string;
-  album?: Album | string;
-  cardType?: CardType | string;
-  confidence: number;
-  rawResponse: string;
-  reasoning?: string; // 识别依据
-}
-
-// 卡片信息接口
-export interface CardInfo {
-  id?: string;
-  member: string;
-  album: string;
-  cardType: string;
-  imageUrl?: string;
-  createdAt?: string;
-}
-
-// 识别记录接口
-export interface RecognitionRecord {
-  id?: string;
-  cardInfo: CardInfo;
-  originalImage: string;
-  recognizedAt: string;
-  userConfirmed: boolean;
-}
