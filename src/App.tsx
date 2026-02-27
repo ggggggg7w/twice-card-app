@@ -5,7 +5,7 @@ import RecognitionResult from './components/RecognitionResult';
 import NineGridResult from './components/NineGridResult';
 import LoadingOverlay from './components/LoadingOverlay';
 import { recognizeCard, recognizeMultipleCards, splitNineGrid, fileToBase64 } from './services/recognition';
-import { saveCardInfo, saveToCollection, localStorage } from './services/feishu';
+import { saveCardInfo, saveToCollection, localStorage as feishuStorage } from './services/feishu';
 import { RecognitionResult as RecognitionResultType, CardInfo } from './config';
 import './App.css';
 
@@ -56,10 +56,10 @@ function App() {
   }, []);
 
   const loadLocalData = () => {
-    const cards = JSON.parse(localStorage.getItem('cards') || '[]');
-    const collections: CollectionItem[] = JSON.parse(localStorage.getItem('collections') || '[]');
-    const records = JSON.parse(localStorage.getItem('recognitionRecords') || '[]');
-    const wishes = JSON.parse(localStorage.getItem('wishlist') || '[]');
+    const cards = JSON.parse(window.localStorage.getItem('cards') || '[]');
+    const collections: CollectionItem[] = JSON.parse(window.localStorage.getItem('collections') || '[]');
+    const records = JSON.parse(window.localStorage.getItem('recognitionRecords') || '[]');
+    const wishes = JSON.parse(window.localStorage.getItem('wishlist') || '[]');
 
     // 合并卡片和收藏信息
     const collectionWithDetails = collections.map((col: CollectionItem) => {
@@ -114,9 +114,9 @@ function App() {
         result,
         timestamp: new Date().toISOString(),
       };
-      const records = JSON.parse(localStorage.getItem('recognitionRecords') || '[]');
+      const records = JSON.parse(window.localStorage.getItem('recognitionRecords') || '[]');
       records.push(record);
-      localStorage.setItem('recognitionRecords', JSON.stringify(records));
+      window.localStorage.setItem('recognitionRecords', JSON.stringify(records));
     } catch (error) {
       console.error('识别失败:', error);
       alert('识别失败: ' + (error instanceof Error ? error.message : '未知错误'));
@@ -188,9 +188,9 @@ function App() {
         results: results.map(r => ({ member: r.member, album: r.album, cardType: r.cardType })),
         timestamp: new Date().toISOString(),
       };
-      const records = JSON.parse(localStorage.getItem('recognitionRecords') || '[]');
+      const records = JSON.parse(window.localStorage.getItem('recognitionRecords') || '[]');
       records.push(record);
-      localStorage.setItem('recognitionRecords', JSON.stringify(records));
+      window.localStorage.setItem('recognitionRecords', JSON.stringify(records));
     } catch (error) {
       console.error('九宫格处理失败:', error);
       alert('九宫格处理失败: ' + (error instanceof Error ? error.message : '未知错误'));
@@ -207,8 +207,8 @@ function App() {
     setLoadingMessage('正在保存...');
     
     try {
-      const cardId = localStorage.saveCardInfo(cardInfo);
-      localStorage.saveToCollection(cardId);
+      const cardId = feishuStorage.saveCardInfo(cardInfo);
+      feishuStorage.saveToCollection(cardId);
       
       alert('保存成功！');
       handleBackToHome();
@@ -227,10 +227,10 @@ function App() {
     
     try {
       for (const card of cards) {
-        const cardId = localStorage.saveCardInfo(card);
-        localStorage.saveToCollection(cardId);
+        const cardId = feishuStorage.saveCardInfo(card);
+        feishuStorage.saveToCollection(cardId);
       }
-      
+
       alert(`成功保存 ${cards.length} 张卡片！`);
       handleBackToHome();
     } catch (error) {
@@ -244,10 +244,10 @@ function App() {
   // 删除收藏
   const handleRemoveFromCollection = (cardId: string) => {
     if (!confirm('确定要从收藏中移除这张卡片吗？')) return;
-    
-    const collections = JSON.parse(localStorage.getItem('collections') || '[]');
+
+    const collections = JSON.parse(window.localStorage.getItem('collections') || '[]');
     const updated = collections.filter((c: any) => c.cardId !== cardId);
-    localStorage.setItem('collections', JSON.stringify(updated));
+    window.localStorage.setItem('collections', JSON.stringify(updated));
     loadLocalData();
   };
 
