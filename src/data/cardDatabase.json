@@ -1,102 +1,58 @@
 {
-  "album": "THIS IS FOR",
-  "releaseDate": "2025-07-11",
-  "versions": [
+  "albums": [
     {
-      "version": "REGULAR PHOTOBOOK",
-      "colorScheme": "绿色背景",
-      "cardType": "专辑卡",
-      "members": {
-        "娜琏": { "row": 1, "features": "蓝色上衣，侧脸角度" },
-        "定延": { "row": 1, "features": "蓝色上衣，短发造型" },
-        "Momo": { "row": 1, "features": "蓝色上衣，长发" },
-        "Sana": { "row": 1, "features": "蓝色上衣，微笑" },
-        "志效": { "row": 1, "features": "蓝色上衣，正脸" },
-        "Mina": { "row": 1, "features": "蓝色上衣，侧脸" },
-        "多贤": { "row": 1, "features": "蓝色上衣，白皙皮肤" },
-        "彩瑛": { "row": 1, "features": "蓝色上衣，个性造型" },
-        "子瑜": { "row": 1, "features": "蓝色上衣，长发" }
-      }
+      "album": "THIS IS FOR",
+      "releaseDate": "2025-07-11",
+      "colorScheme": "绿色/蓝色/黄色",
+      "versions": [
+        { "version": "REGULAR PHOTOBOOK", "colorScheme": "绿色背景", "cardType": "专辑卡" },
+        { "version": "DIGIPACK", "colorScheme": "紫色/粉色背景", "cardType": "单封版专辑卡" },
+        { "version": "CONFETTI", "colorScheme": "彩色/绿色背景", "cardType": "特别版专辑卡" },
+        { "version": "POLAROID THIS", "colorScheme": "蓝色边框", "cardType": "拍立得特典卡" },
+        { "version": "POLAROID IS", "colorScheme": "黄色边框", "cardType": "拍立得特典卡" },
+        { "version": "POLAROID FOR", "colorScheme": "绿色边框", "cardType": "拍立得特典卡" }
+      ]
     },
     {
-      "version": "DIGIPACK",
-      "colorScheme": "紫色/粉色背景",
-      "cardType": "单封版专辑卡",
-      "members": {
-        "娜琏": { "features": "粉色系，甜美表情" },
-        "定延": { "features": "紫色系，短发" },
-        "Momo": { "features": "粉色系，日系妆容" },
-        "Sana": { "features": "粉色系，笑眼" },
-        "志效": { "features": "紫色系，成熟气质" },
-        "Mina": { "features": "粉色系，优雅" },
-        "多贤": { "features": "粉色系，白皙" },
-        "彩瑛": { "features": "紫色系，前卫造型" },
-        "子瑜": { "features": "粉色系，端庄" }
-      }
+      "album": "STRATEGY",
+      "releaseDate": "2024-12-06",
+      "colorScheme": "红色/深色",
+      "versions": [
+        { "version": "REGULAR PHOTOBOOK", "colorScheme": "红色背景", "cardType": "专辑卡" },
+        { "version": "DIGIPACK STEP4", "colorScheme": "深蓝色背景", "cardType": "单封版专辑卡" },
+        { "version": "HIGHLIGHT", "colorScheme": "浅灰背景", "cardType": "特别版专辑卡" },
+        { "version": "NEMO STEP1", "colorScheme": "红色背景", "cardType": "电子专卡" },
+        { "version": "NEMO STEP2", "colorScheme": "粉色背景", "cardType": "电子专卡" },
+        { "version": "NEMO STEP3", "colorScheme": "深灰背景", "cardType": "电子专卡" }
+      ]
     },
     {
-      "version": "CONFETTI",
-      "colorScheme": "彩色/绿色背景",
-      "cardType": "特别版专辑卡",
-      "members": {
-        "娜琏": { "features": "彩带元素，活泼" },
-        "定延": { "features": "彩带元素，短发" },
-        "Momo": { "features": "彩带元素，甜美" },
-        "Sana": { "features": "彩带元素，笑眼" },
-        "志效": { "features": "彩带元素，自信" },
-        "Mina": { "features": "彩带元素，优雅" },
-        "多贤": { "features": "彩带元素，可爱" },
-        "彩瑛": { "features": "彩带元素，个性" },
-        "子瑜": { "features": "彩带元素，大气" }
-      }
+      "album": "TEN: The Story Goes On",
+      "releaseDate": "2025-10-20",
+      "colorScheme": "十周年纪念",
+      "versions": [
+        { "version": "MP单封", "colorScheme": "多平台特典", "cardType": "平台特典卡" },
+        { "version": "MK单封", "colorScheme": "多平台特典", "cardType": "平台特典卡" },
+        { "version": "BDM单封", "colorScheme": "多平台特典", "cardType": "平台特典卡" },
+        { "version": "MP团封", "colorScheme": "多平台特典", "cardType": "平台特典卡" },
+        { "version": "MK团封", "colorScheme": "多平台特典", "cardType": "平台特典卡" },
+        { "version": "BDM团封", "colorScheme": "多平台特典", "cardType": "平台特典卡" },
+        { "version": "KPOP NARA", "colorScheme": "平台特典", "cardType": "平台特典卡" }
+      ]
     },
     {
-      "version": "POLAROID THIS",
-      "colorScheme": "蓝色边框",
-      "cardType": "拍立得特典卡",
-      "members": {
-        "娜琏": { "features": "蓝色拍立得边框，复古感" },
-        "定延": { "features": "蓝色拍立得边框，短发" },
-        "Momo": { "features": "蓝色拍立得边框，甜美" },
-        "Sana": { "features": "蓝色拍立得边框，笑眼" },
-        "志效": { "features": "蓝色拍立得边框，成熟" },
-        "Mina": { "features": "蓝色拍立得边框，优雅" },
-        "多贤": { "features": "蓝色拍立得边框，白皙" },
-        "彩瑛": { "features": "蓝色拍立得边框，个性" },
-        "子瑜": { "features": "蓝色拍立得边框，端庄" }
-      }
-    },
-    {
-      "version": "POLAROID IS",
-      "colorScheme": "黄色边框",
-      "cardType": "拍立得特典卡",
-      "members": {
-        "娜琏": { "features": "黄色拍立得边框，复古感" },
-        "定延": { "features": "黄色拍立得边框，短发" },
-        "Momo": { "features": "黄色拍立得边框，甜美" },
-        "Sana": { "features": "黄色拍立得边框，笑眼" },
-        "志效": { "features": "黄色拍立得边框，成熟" },
-        "Mina": { "features": "黄色拍立得边框，优雅" },
-        "多贤": { "features": "黄色拍立得边框，白皙" },
-        "彩瑛": { "features": "黄色拍立得边框，个性" },
-        "子瑜": { "features": "黄色拍立得边框，端庄" }
-      }
-    },
-    {
-      "version": "POLAROID FOR",
-      "colorScheme": "绿色边框",
-      "cardType": "拍立得特典卡",
-      "members": {
-        "娜琏": { "features": "绿色拍立得边框，复古感" },
-        "定延": { "features": "绿色拍立得边框，短发" },
-        "Momo": { "features": "绿色拍立得边框，甜美" },
-        "Sana": { "features": "绿色拍立得边框，笑眼" },
-        "志效": { "features": "绿色拍立得边框，成熟" },
-        "Mina": { "features": "绿色拍立得边框，优雅" },
-        "多贤": { "features": "绿色拍立得边框，白皙" },
-        "彩瑛": { "features": "绿色拍立得边框，个性" },
-        "子瑜": { "features": "绿色拍立得边框，端庄" }
-      }
+      "album": "DIVE",
+      "releaseDate": "2024-07-17",
+      "colorScheme": "蓝色海洋主题",
+      "versions": [
+        { "version": "REGULAR", "colorScheme": "浅蓝色背景", "cardType": "专辑卡" },
+        { "version": "LIMITED A", "colorScheme": "深蓝色背景", "cardType": "限定版专辑卡" },
+        { "version": "LIMITED B", "colorScheme": "深蓝色背景", "cardType": "限定版专辑卡" },
+        { "version": "ONCE JAPAN", "colorScheme": "日本会员限定", "cardType": "会员限定卡" },
+        { "version": "LIMITED COVERS", "colorScheme": "粉色/紫色", "cardType": "限定封面卡" },
+        { "version": "SOLO MEMBER COVERS", "colorScheme": "个人封面", "cardType": "单封卡" },
+        { "version": "7TH ANNIV COLLECTION BOX", "colorScheme": "周年纪念", "cardType": "纪念盒卡" }
+      ]
     }
   ],
   "memberKeyFeatures": {
@@ -109,5 +65,11 @@
     "多贤": ["皮肤最白", "单眼皮/内双", "活泼搞怪", "综艺感"],
     "彩瑛": ["个性前卫", "短发造型多", "时尚感", "艺术气质"],
     "子瑜": ["身高最高", "精致五官", "端庄大气", "门面气质"]
+  },
+  "albumVisualGuide": {
+    "THIS IS FOR": "绿色系为主，十周年纪念风格",
+    "STRATEGY": "红色系，成熟强势风格",
+    "TEN: The Story Goes On": "十周年纪念，多平台特典",
+    "DIVE": "蓝色海洋主题，夏日清爽风格"
   }
 }
