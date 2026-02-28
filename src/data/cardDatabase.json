@@ -1,0 +1,113 @@
+{
+  "album": "THIS IS FOR",
+  "releaseDate": "2025-07-11",
+  "versions": [
+    {
+      "version": "REGULAR PHOTOBOOK",
+      "colorScheme": "绿色背景",
+      "cardType": "专辑卡",
+      "members": {
+        "娜琏": { "row": 1, "features": "蓝色上衣，侧脸角度" },
+        "定延": { "row": 1, "features": "蓝色上衣，短发造型" },
+        "Momo": { "row": 1, "features": "蓝色上衣，长发" },
+        "Sana": { "row": 1, "features": "蓝色上衣，微笑" },
+        "志效": { "row": 1, "features": "蓝色上衣，正脸" },
+        "Mina": { "row": 1, "features": "蓝色上衣，侧脸" },
+        "多贤": { "row": 1, "features": "蓝色上衣，白皙皮肤" },
+        "彩瑛": { "row": 1, "features": "蓝色上衣，个性造型" },
+        "子瑜": { "row": 1, "features": "蓝色上衣，长发" }
+      }
+    },
+    {
+      "version": "DIGIPACK",
+      "colorScheme": "紫色/粉色背景",
+      "cardType": "单封版专辑卡",
+      "members": {
+        "娜琏": { "features": "粉色系，甜美表情" },
+        "定延": { "features": "紫色系，短发" },
+        "Momo": { "features": "粉色系，日系妆容" },
+        "Sana": { "features": "粉色系，笑眼" },
+        "志效": { "features": "紫色系，成熟气质" },
+        "Mina": { "features": "粉色系，优雅" },
+        "多贤": { "features": "粉色系，白皙" },
+        "彩瑛": { "features": "紫色系，前卫造型" },
+        "子瑜": { "features": "粉色系，端庄" }
+      }
+    },
+    {
+      "version": "CONFETTI",
+      "colorScheme": "彩色/绿色背景",
+      "cardType": "特别版专辑卡",
+      "members": {
+        "娜琏": { "features": "彩带元素，活泼" },
+        "定延": { "features": "彩带元素，短发" },
+        "Momo": { "features": "彩带元素，甜美" },
+        "Sana": { "features": "彩带元素，笑眼" },
+        "志效": { "features": "彩带元素，自信" },
+        "Mina": { "features": "彩带元素，优雅" },
+        "多贤": { "features": "彩带元素，可爱" },
+        "彩瑛": { "features": "彩带元素，个性" },
+        "子瑜": { "features": "彩带元素，大气" }
+      }
+    },
+    {
+      "version": "POLAROID THIS",
+      "colorScheme": "蓝色边框",
+      "cardType": "拍立得特典卡",
+      "members": {
+        "娜琏": { "features": "蓝色拍立得边框，复古感" },
+        "定延": { "features": "蓝色拍立得边框，短发" },
+        "Momo": { "features": "蓝色拍立得边框，甜美" },
+        "Sana": { "features": "蓝色拍立得边框，笑眼" },
+        "志效": { "features": "蓝色拍立得边框，成熟" },
+        "Mina": { "features": "蓝色拍立得边框，优雅" },
+        "多贤": { "features": "蓝色拍立得边框，白皙" },
+        "彩瑛": { "features": "蓝色拍立得边框，个性" },
+        "子瑜": { "features": "蓝色拍立得边框，端庄" }
+      }
+    },
+    {
+      "version": "POLAROID IS",
+      "colorScheme": "黄色边框",
+      "cardType": "拍立得特典卡",
+      "members": {
+        "娜琏": { "features": "黄色拍立得边框，复古感" },
+        "定延": { "features": "黄色拍立得边框，短发" },
+        "Momo": { "features": "黄色拍立得边框，甜美" },
+        "Sana": { "features": "黄色拍立得边框，笑眼" },
+        "志效": { "features": "黄色拍立得边框，成熟" },
+        "Mina": { "features": "黄色拍立得边框，优雅" },
+        "多贤": { "features": "黄色拍立得边框，白皙" },
+        "彩瑛": { "features": "黄色拍立得边框，个性" },
+        "子瑜": { "features": "黄色拍立得边框，端庄" }
+      }
+    },
+    {
+      "version": "POLAROID FOR",
+      "colorScheme": "绿色边框",
+      "cardType": "拍立得特典卡",
+      "members": {
+        "娜琏": { "features": "绿色拍立得边框，复古感" },
+        "定延": { "features": "绿色拍立得边框，短发" },
+        "Momo": { "features": "绿色拍立得边框，甜美" },
+        "Sana": { "features": "绿色拍立得边框，笑眼" },
+        "志效": { "features": "绿色拍立得边框，成熟" },
+        "Mina": { "features": "绿色拍立得边框，优雅" },
+        "多贤": { "features": "绿色拍立得边框，白皙" },
+        "彩瑛": { "features": "绿色拍立得边框，个性" },
+        "子瑜": { "features": "绿色拍立得边框，端庄" }
+      }
+    }
+  ],
+  "memberKeyFeatures": {
+    "娜琏": ["兔牙（最显著）", "甜美笑容", "圆润鹅蛋脸", "大眼卧蚕"],
+    "定延": ["短发造型", "英气五官", "清晰下颌线", "中性气质"],
+    "Momo": ["日系妆容", "小V脸", "眼妆较浓", "表情丰富"],
+    "Sana": ["笑眼（眼睛弯成月牙）", "大阪甜心", "鹅蛋脸", "甜美感染力"],
+    "志效": ["健康肤色", "大气五官", "宽双眼皮", "成熟稳重"],
+    "Mina": ["天鹅颈", "芭蕾气质", "清冷优雅", "柔和线条"],
+    "多贤": ["皮肤最白", "单眼皮/内双", "活泼搞怪", "综艺感"],
+    "彩瑛": ["个性前卫", "短发造型多", "时尚感", "艺术气质"],
+    "子瑜": ["身高最高", "精致五官", "端庄大气", "门面气质"]
+  }
+}
