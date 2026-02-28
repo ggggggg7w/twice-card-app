@@ -4,90 +4,41 @@ import cardDatabase from '../data/cardDatabase.json';
 const API_BASE_URL = '';
 
 /**
- * 获取图鉴数据库信息用于提示词
- */
-function getCardDatabaseInfo(): string {
-  const db = cardDatabase as any;
-  let info = `## 图鉴数据库\n\n`;
-  
-  // 专辑列表
-  db.albums.forEach((album: any) => {
-    info += `**${album.album}** (${album.colorScheme})\n`;
-    album.versions.forEach((v: any) => {
-      info += `  - ${v.version}：${v.cardType}，${v.colorScheme}\n`;
-    });
-    info += '\n';
-  });
-  
-  // 成员特征
-  info += '## 成员关键特征\n';
-  Object.entries(db.memberKeyFeatures).forEach(([member, features]: [string, any]) => {
-    info += `- **${member}**：${features.join('、')}\n`;
-  });
-  
-  // 卡片类型定义
-  info += '\n## 卡片类型识别指南\n';
-  Object.entries(db.cardTypeDefinitions).forEach(([type, data]: [string, any]) => {
-    info += `**${type}**：${data.description}\n`;
-    info += `- 特征：${data.features.join('、')}\n`;
-  });
-  
-  return info;
-}
-
-/**
- * 识别小卡
+ * 识别小卡 - 简化版提示词
  */
 export async function recognizeCard(imageBase64: string): Promise<RecognitionResult> {
-  const databaseInfo = getCardDatabaseInfo();
+  const db = cardDatabase as any;
   
-  const prompt = `你是一位专业的 TWICE 小卡鉴定专家。请分析这张小卡图片。
+  // 简化提示词，只给关键信息
+  const prompt = `识别这张TWICE小卡。按以下步骤：
 
-${databaseInfo}
+**成员识别（看最显著特征）：**
+- 兔牙明显 → 娜琏
+- 眼睛弯成月牙笑眼 → Sana  
+- 短发英气 → 定延
+- 皮肤最白 → 多贤
+- 小V脸日系妆 → Momo
+- 健康肤色大气 → 志效
+- 天鹅颈优雅 → Mina
+- 个性前卫 → 彩瑛
+- 五官精致端庄 → 子瑜
 
-## 识别任务（按优先级）
-
-**第一步：判断卡片大类**
-观察以下特征：
-1. **是否有拍立得边框** → 拍立得卡
-2. **是否有平台Logo**（MP/MK/BDM等）→ 特典卡
-3. **是否有ONCE JAPAN标识** → 日周卡
-4. **是否有日期/台历元素** → 周边卡（台历卡）
-5. **是否有NEMO/电子专标识** → 电子专卡
-6. **以上都没有** → 专辑卡
-
-**第二步：判断专辑**
-- 绿色系 → THIS IS FOR
-- 红色系 → STRATEGY
+**专辑判断（看背景）：**
+- 绿色 → THIS IS FOR
+- 红色 → STRATEGY
 - 蓝色海洋 → DIVE
-- 十周年纪念 → TEN
+- 冬季/雪景/毛衣 → 冬日快闪
 
-**第三步：判断成员**
-按显著特征：兔牙(娜琏) > 笑眼(Sana) > 短发(定延) > 皮肤白(多贤)
+**卡片类型：**
+- 拍立得边框 → 拍立得卡
+- 有MP/MK/BDM等Logo → 平台特典卡
+- ONCE JAPAN字样 → 日周卡
+- 以上都没有 → 专辑卡
 
-**第四步：判断具体版本**
-参考图鉴中的版本列表
+**必须返回JSON格式：**
+{"member":"成员名","album":"专辑名","cardType":"卡片类型","confidence":0.8,"reasoning":"识别依据"}
 
-## 输出格式（严格JSON）
-
-{
-  "member": "成员名称（娜琏/定延/Momo/Sana/志效/Mina/多贤/彩瑛/子瑜）",
-  "album": "专辑名称",
-  "cardType": "卡片大类（专辑卡/特典卡/日周卡/周边卡/拍立得卡/电子专卡）",
-  "cardSubType": "具体类型（如：平台特典卡/签售卡/满额卡/台历卡等）",
-  "version": "版本名称",
-  "platform": "平台（MP/MK/BDM等，如果是特典卡）",
-  "confidence": 0.85,
-  "reasoning": "识别依据：1.卡片类型判断 2.专辑判断 3.成员判断"
-}
-
-confidence评分：
-- 0.9-1.0：卡片类型+专辑+成员都明确
-- 0.7-0.9：两项明确，一项推测
-- 0.5-0.7：只有一项明确
-- <0.5：无法判断
-
-请严格按步骤分析，给出最准确的判断。`;
+confidence: 0.9-1.0(很确定), 0.7-0.9(较确定), 0.5-0.7(不太确定), <0.5(不确定)`;
 
   try {
     const response = await fetch(`${API_BASE_URL}/api/recognize`, {
@@ -104,6 +55,7 @@ confidence评分：
     const data = await response.json();
     const content = data.choices?.[0]?.message?.content || '';
     
+    // 提取JSON
     const jsonMatch = content.match(/\{[\s\S]*\}/);
     let result: Partial<RecognitionResult> = {};
     
@@ -111,7 +63,7 @@ confidence评分：
       try {
         result = JSON.parse(jsonMatch[0]);
       } catch (e) {
-        console.warn('JSON 解析失败');
+        console.warn('JSON解析失败，内容:', content);
       }
     }
 
@@ -120,7 +72,7 @@ confidence评分：
       album: result.album || '未知',
       cardType: result.cardType || '未知',
       confidence: result.confidence || 0.5,
-      reasoning: result.reasoning || '',
+      reasoning: result.reasoning || content.substring(0, 100),
       rawResponse: content,
     };
   } catch (error) {

@@ -117,5 +117,17 @@
     "K4": "KTOWN4U",
     "WM": "WITHMUU",
     "JYPSHOP": "JYP官方商店"
-  }
+  },
+  "specialEvents": [
+    {
+      "event": "2025日本冬日快闪",
+      "date": "2025-12",
+      "location": "日本",
+      "cardType": "满额卡",
+      "condition": "消费满1万日元随机赠送",
+      "colorScheme": "冬季/圣诞主题",
+      "visualFeatures": ["雪景背景", "毛衣/围巾/毛线帽", "毛绒质感", "温暖色调"],
+      "members": ["娜琏", "定延", "Momo", "Sana", "志效", "Mina", "多贤", "彩瑛", "子瑜"]
+    }
+  ]
 }
