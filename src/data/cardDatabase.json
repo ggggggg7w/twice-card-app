@@ -71,5 +71,51 @@
     "STRATEGY": "红色系，成熟强势风格",
     "TEN: The Story Goes On": "十周年纪念，多平台特典",
     "DIVE": "蓝色海洋主题，夏日清爽风格"
+  },
+  "cardTypeDefinitions": {
+    "专辑卡": {
+      "description": "随专辑附赠的标准小卡",
+      "features": ["标准尺寸(5.5x8.5cm)", "普通印刷", "无边框或简单边框", "随专辑版本不同而变化"],
+      "examples": ["REGULAR PHOTOBOOK", "DIGIPACK", "LIMITED"]
+    },
+    "特典卡": {
+      "description": "预售礼或平台特典",
+      "features": ["可能有闪膜/镭射/全息效果", "平台Logo", "特殊工艺", "预购限定"],
+      "examples": ["MP", "MK", "BDM", "MUSICPLANT", "SOUNDWAVE"],
+      "subTypes": {
+        "平台特典卡": "各大平台预售特典(MP/MK/BDM等)",
+        "签售卡": "线下签售活动卡，通常有Fansign标记",
+        "满额卡": "快闪店消费满额赠送，通常有活动标识"
+      }
+    },
+    "日周卡": {
+      "description": "日本官方周边卡",
+      "features": ["ONCE JAPAN标识", "日本限定", "通常有日文", "会员限定或活动限定"],
+      "examples": ["ONCE JAPAN", "日周随机卡", "日本演唱会周边"]
+    },
+    "周边卡": {
+      "description": "官方周边附赠卡",
+      "features": ["台历卡(有日期)", "DVD卡(有DVD封面元素)", "随机卡包抽取", "周边商品附赠"],
+      "examples": ["台历卡", "DVD卡", "随机卡", "会员礼"]
+    },
+    "拍立得卡": {
+      "description": "拍立得样式特典卡",
+      "features": ["拍立得边框", "复古感", "通常有边框颜色区分版本", "特典限定"],
+      "examples": ["POLAROID THIS", "POLAROID IS", "POLAROID FOR"]
+    },
+    "电子专卡": {
+      "description": "电子专辑附赠卡",
+      "features": ["NEMO/电子专标识", "无实体专辑", "QR码或下载码", "环保包装"],
+      "examples": ["NEMO STEP1/2/3"]
+    }
+  },
+  "platformCodes": {
+    "MP": "MUSICPLANT",
+    "MK": "MUSICKOREA",
+    "BDM": "BLUE DREAM MEDIA",
+    "SW": "SOUNDWAVE",
+    "K4": "KTOWN4U",
+    "WM": "WITHMUU",
+    "JYPSHOP": "JYP官方商店"
   }
 }

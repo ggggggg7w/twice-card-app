@@ -8,16 +8,28 @@ const API_BASE_URL = '';
  */
 function getCardDatabaseInfo(): string {
   const db = cardDatabase as any;
-  let info = `## 已知图鉴参考（${db.album} 专辑）\n\n`;
+  let info = `## 图鉴数据库\n\n`;
   
-  db.versions.forEach((version: any) => {
-    info += `**${version.version}** (${version.colorScheme})\n`;
-    info += `- 类型：${version.cardType}\n`;
+  // 专辑列表
+  db.albums.forEach((album: any) => {
+    info += `**${album.album}** (${album.colorScheme})\n`;
+    album.versions.forEach((v: any) => {
+      info += `  - ${v.version}：${v.cardType}，${v.colorScheme}\n`;
+    });
+    info += '\n';
   });
   
-  info += '\n## 成员关键特征速查\n';
+  // 成员特征
+  info += '## 成员关键特征\n';
   Object.entries(db.memberKeyFeatures).forEach(([member, features]: [string, any]) => {
     info += `- **${member}**：${features.join('、')}\n`;
+  });
+  
+  // 卡片类型定义
+  info += '\n## 卡片类型识别指南\n';
+  Object.entries(db.cardTypeDefinitions).forEach(([type, data]: [string, any]) => {
+    info += `**${type}**：${data.description}\n`;
+    info += `- 特征：${data.features.join('、')}\n`;
   });
   
   return info;
@@ -33,26 +45,49 @@ export async function recognizeCard(imageBase64: string): Promise<RecognitionRes
 
 ${databaseInfo}
 
-## 识别任务
+## 识别任务（按优先级）
 
-1. **背景颜色/边框**：绿色/蓝色/黄色/紫色？
-2. **卡片类型**：标准专辑卡、拍立得样式？
-3. **成员特征**：
-   - 最显著特征：兔牙？笑眼？短发？皮肤白？
-   - 对比图鉴中该成员的特征
+**第一步：判断卡片大类**
+观察以下特征：
+1. **是否有拍立得边框** → 拍立得卡
+2. **是否有平台Logo**（MP/MK/BDM等）→ 特典卡
+3. **是否有ONCE JAPAN标识** → 日周卡
+4. **是否有日期/台历元素** → 周边卡（台历卡）
+5. **是否有NEMO/电子专标识** → 电子专卡
+6. **以上都没有** → 专辑卡
 
-## 专辑判断（THIS IS FOR）
-- 绿色背景 → REGULAR 或 POLAROID FOR
-- 蓝色背景 → POLAROID THIS
-- 黄色背景 → POLAROID IS
-- 紫色/粉色 → DIGIPACK
-- 彩带元素 → CONFETTI
+**第二步：判断专辑**
+- 绿色系 → THIS IS FOR
+- 红色系 → STRATEGY
+- 蓝色海洋 → DIVE
+- 十周年纪念 → TEN
+
+**第三步：判断成员**
+按显著特征：兔牙(娜琏) > 笑眼(Sana) > 短发(定延) > 皮肤白(多贤)
+
+**第四步：判断具体版本**
+参考图鉴中的版本列表
 
 ## 输出格式（严格JSON）
 
-{"member":"成员名称","album":"专辑名称","cardType":"卡片类型","version":"版本","confidence":0.85,"reasoning":"识别依据"}
+{
+  "member": "成员名称（娜琏/定延/Momo/Sana/志效/Mina/多贤/彩瑛/子瑜）",
+  "album": "专辑名称",
+  "cardType": "卡片大类（专辑卡/特典卡/日周卡/周边卡/拍立得卡/电子专卡）",
+  "cardSubType": "具体类型（如：平台特典卡/签售卡/满额卡/台历卡等）",
+  "version": "版本名称",
+  "platform": "平台（MP/MK/BDM等，如果是特典卡）",
+  "confidence": 0.85,
+  "reasoning": "识别依据：1.卡片类型判断 2.专辑判断 3.成员判断"
+}
 
-confidence：0.9-1.0（背景+特征都匹配）、0.7-0.9（较确定）、0.5-0.7（不太确定）、<0.5（无法判断）`;
+confidence评分：
+- 0.9-1.0：卡片类型+专辑+成员都明确
+- 0.7-0.9：两项明确，一项推测
+- 0.5-0.7：只有一项明确
+- <0.5：无法判断
+
+请严格按步骤分析，给出最准确的判断。`;
 
   try {
     const response = await fetch(`${API_BASE_URL}/api/recognize`, {
