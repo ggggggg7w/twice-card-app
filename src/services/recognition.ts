@@ -23,16 +23,18 @@ export async function recognizeCard(imageBase64: string): Promise<RecognitionRes
 - 个性前卫 → 彩瑛
 - 五官精致端庄 → 子瑜
 
-**专辑判断（看背景）：**
+**专辑/来源判断（看背景）：**
 - 绿色 → THIS IS FOR
 - 红色 → STRATEGY
 - 蓝色海洋 → DIVE
 - 冬季/雪景/毛衣 → 冬日快闪
+- 浅色背景+西装/衬衫+商务风 → 2026日本台历
 
 **卡片类型：**
 - 拍立得边框 → 拍立得卡
 - 有MP/MK/BDM等Logo → 平台特典卡
 - ONCE JAPAN字样 → 日周卡
+- 浅色简约+成员名字标识 → 台历卡
 - 以上都没有 → 专辑卡
 
 **必须返回JSON格式：**

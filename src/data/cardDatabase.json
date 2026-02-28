@@ -128,6 +128,17 @@
       "colorScheme": "冬季/圣诞主题",
       "visualFeatures": ["雪景背景", "毛衣/围巾/毛线帽", "毛绒质感", "温暖色调"],
       "members": ["娜琏", "定延", "Momo", "Sana", "志效", "Mina", "多贤", "彩瑛", "子瑜"]
+    },
+    {
+      "event": "2026日本台历",
+      "date": "2025-10",
+      "location": "日本",
+      "cardType": "台历卡",
+      "officialName": "TWICE JAPAN SEASON'S GREETINGS 2026 'Captured Moments'",
+      "colorScheme": "商务休闲/简约",
+      "visualFeatures": ["统一浅色背景", "休闲西装/衬衫", "成熟商务风", "简约干净"],
+      "members": ["娜琏", "定延", "Momo", "Sana", "志效", "Mina", "多贤", "彩瑛", "子瑜"],
+      "notes": "九人完整套装，风格统一，有成员名字标识"
     }
   ]
 }
